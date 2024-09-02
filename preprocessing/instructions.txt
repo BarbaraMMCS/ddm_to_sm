@@ -1,0 +1,9 @@
+RUN
+
+generate_landcover_map_numpy.py
+generate_water_map_numpy.py
+smap.py
+
+AND then
+
+cygnss.py

@@ -1,0 +1,56 @@
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+CYGNSS & SMAP
+---------------
+SET UP logins using the terminal:
+echo -e "machine urs.earthdata.nasa.gov\n\tlogin <USERNAME>\n\tpassword <PASSWORD>" >> $HOME/.netrc
+chmod 600 $HOME/.netrc
+
+check
+nano $HOME/.netrc
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+CYGNSS
+---------------
+INSTALL:
+pip install podaac-data-subscriber
+
+MODIFY download/config.py
+RUN download_cygnss.py
+
+docs:
+https://github.com/podaac/data-subscriber/blob/main/Downloader.md
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+SMAP
+---------------
+https://nsidc.org/data/smap/data?field_data_set_keyword_value=4
+docs:
+https://earthaccess.readthedocs.io/en/latest/quick-start/
+
+INSTALL:
+pip install earthaccess
+MODIFY download/config.py
+
+RUN with python version >3.8
+download_smap_data_step1.py
+
+THEN RUN to get the data (on the hpc)
+download_smap_data_step2.py
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+LANDCOVER
+---------------
+https://www.esa-landcover-cci.org/?q=node/197
+LOG IN for access
+C3S-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1.nc
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+WATER
+---------------
+https://global-surface-water.appspot.com/download
+
+source venv/bin/activate
+RUN
+python download_water_data.py

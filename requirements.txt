@@ -1,0 +1,7 @@
+earthaccess
+pillow
+numpy
+h5py
+netCDF4
+pandas
+geopandas

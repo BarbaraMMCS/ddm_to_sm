@@ -1,0 +1,95 @@
+-----------------------------
+Download data
+-----------------------------
+
+Apply water mask
+has water if there’s water at least 1 month
+check the percentage of cells that had water compared to the total number of cells in the 3.5 km box
+If there’s more than 0.5% you can discard that observation
+
+--------------------
+Cygnss data to keep:
+
+'gps_eirp',
+'sp_rx_gain',
+'rx_to_sp_range',
+'tx_to_sp_range',
+'power_analog',
+'ddm_snr', use only the observations with ddm_snr >= 0.5
+'sp_lat',
+'sp_lon',
+'sp_inc_angle', remove values above 65 degrees
+'pp_delay_bin',
+'pp_dopp_bin',
+'ddm',
+'ddm_snr',
+'ddm_timestamp_gps_sec',
+'ddm_timestamp_gps_week',
+
+'quality_flags',
+    KEEP
+    sp_over_land
+    EXCLUDE
+    s_band_powered_up
+    large_sc_attitude_err
+    black_body_ddm
+    ddm_is_test_pattern
+    direct_signal_in_ddm
+    low_confdence_gps_eirp_estimate
+
+#'sp_alt',
+#'prn_code',
+#'sp_pos_x',
+#'sp_pos_y',
+#'sp_pos_z',
+#'sp_vel_x',
+#'sp_vel_y',
+#'sp_vel_z',
+#'track_id',
+#'spacecraft_num',
+#'coherence_pr',
+#'ddm_kurtosis',
+#'ddm_noise_floor',
+#'ddm_nbrcs',
+#'ddm_les',
+#'eff_scatter',
+#'brcs',
+#'sp_theta_orbit',
+#'inst_gain',
+#'fresnel_coeff',
+#'raw_counts',
+
+
+------------------------
+combine with SMAP
+use the observations flagged as successful retrievals
+select the smap observation closest to the cygnss specular point time,
+check smap observations 24 hours before and after cygnss time,
+and then interpolate it to cygnss time
+
+'smap_sm_ad',
+'smap_vwc',
+
+--------------------
+Combine with landcover C3S-LC-L4-LCCS-Map-300m-P1Y-2020-v2.1.1.nc
+use/look what you did in generate_dataset.py
+to get
+'lccs'
+
+----------------------
+use reflectivity.py to calculate:
+'reflectivity',
+----------------------
+use/look what you did in generate_dataset.py
+
+'day_sin'
+'day_cos'
+
+--------------------
+use easegrid2.py
+to get:
+
+'col_9km',
+'row_9km',
+'lon_9km',
+'lat_9km',
