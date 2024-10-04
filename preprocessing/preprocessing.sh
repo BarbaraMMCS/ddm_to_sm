@@ -4,7 +4,7 @@
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=64
 #SBATCH -c 1
-#SBATCH --mail-user=barbara.symeon.001@uni.lu
+#SBATCH --mail-user=...
 #SBATCH --mail-type=all
 
 
